@@ -122,7 +122,6 @@ function chooseThisCreature(creatureToAdd: string): void {
 function addCreatureToList(): void{
     showLoadingScreen("mainLootGeneratorDiv");
     creatureLiElementId = creatureAdder.addCreature(creatureLiElementId, data);
-    hideLoadingScreen("mainLootGeneratorDiv");
 }
 
 function removeCreatureFromList(id: number): void{

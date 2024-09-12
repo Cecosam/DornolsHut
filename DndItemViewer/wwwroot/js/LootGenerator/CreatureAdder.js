@@ -49,6 +49,7 @@ class CreatureAdder {
             //return creatureLiElementId;
         }
         else {
+            hideLoadingScreen("mainLootGeneratorDiv");
             let inputField = document.getElementById("chooseCreatureInputInModal");
             let listWithCreatures = document.getElementById("listWithCreatures");
             while (listWithCreatures.firstChild) {
