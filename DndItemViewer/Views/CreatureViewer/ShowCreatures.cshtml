@@ -1,0 +1,93 @@
+﻿@model List<ICreatureForShowCreatures>
+@using DndItemViewer.Helpers
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<partial name="_LoadingScreenPartial" />
+<div id="ShowCreaturesMainDiv" class="bg-primary-subtle opacity-custom-95 p-3">
+    <div class="card bg-primary mb-3 p-5 text-light" style="max-width: 100%;">
+        <div class="card-body position-relative" style="max-width: 100%;">
+            <input id="creaturesFilter" class="w-100 form-control p-1 m-0" type="text" name="input" placeholder="Multiple parameters filter" autocomplete="off" />
+            <p hidden id="searchBoxInfo" class="position-absolute p-1 m-0 text-center bg-dark">
+                You can filter creatures by Name, Type, CR and Size, all at the same time. To filter a category by several parameters use '<>' like this: 'Medium<>Large'. 
+                By using '<>', you can also set CR range of creatures: '10<>15'. Example: '4<>9 medium fiend<>aberration<>celestial'.
+            </p>
+            <br />
+            <div class="d-flex justify-content-center">
+                <button id="showHideSources" type="button" class="btn btn-info mb-3">Show Sources</button>
+            </div>
+            <select hidden id="sourcesSelect" class="form-select p-1 m-0" size="10" multiple aria-label="select example">
+                <option value="1">Acquisitions Incorporated</option>
+                <option value="2">Baldur’s Gate: Descent Into Avernus</option>
+                <option value="3">Bigby Presents: Glory of the Giants</option>
+                <option value="4">Boo’s Astral Menagerie</option>
+                <option value="5">Candlekeep Mysteries</option>
+                <option value="6">Curse of Strahd</option>
+                <option value="7">Descent into the Lost Caverns of Tsojcanth</option>
+                <option value="8">Divine Contention</option>ion>
+                <option value="9">Dragon of Icespire Peak</option>
+                <option value="10">Dragonlance: Shadow of the Dragon Queen</option>
+                <option value="11">Dragons of Stormwreck Isle</option>
+                <option value="12">Dungeon Master’s Guide</option>
+                <option value="13">Eberron: Rising from the Last War</option>
+                <option value="14">Essentials Kit</option>
+                <option value="15">Fizban’s Treasury of Dragons</option>
+                <option value="16">Ghosts of Saltmarsh</option>
+                <option value="17">Guildmasters’ Guide to Ravnica</option>
+                <option value="18">Hoard of the Dragon Queen</option>
+                <option value="19">Icewind Dale: Rime of the Frostmaiden</option>
+                <option value="20">Journeys through the Radiant Citadel</option>
+                <option value="21">Keys from the Golden Vault</option>
+                <option value="22">Krenko’s Way</option>
+                <option value="23">Light of Xaryxis</option>
+                <option value="24">Lost Mine of Phandelver</option>
+                <option value="25">Monster Manual</option>
+                <option value="26">Mordenkainen Presents: Monsters of the Multiverse</option>
+                <option value="27">Mordenkainen’s Tome of Foes</option>
+                <option value="28">Morte’s Planar Parade</option>
+                <option value="29">Mythic Odysseys of Theros</option>
+                <option value="30">Out of the Abyss</option>
+                <option value="31">Phandelver and Below: The Shattered Obelisk</option>
+                <option value="32">Player’s Handbook</option>
+                <option value="33">Princes of the Apocalypse</option>
+                <option value="34">Quests from the Infinite Staircase</option>
+                <option value="35">Sleeping Dragon’s Wake</option>
+                <option value="36">Storm King’s Thunder</option>
+                <option value="37">Storm Lord’s Wrath</option>
+                <option value="38">Strixhaven: A Curriculum of Chaos</option>
+                <option value="39">Tales from the Yawning Portal</option>
+                <option value="40">Tasha’s Cauldron of Everything</option>
+                <option value="41">The Book of Many Things</option>
+                <option value="42">The House of Lament</option>
+                <option value="43">The Orrery of the Wanderer</option>
+                <option value="44">The Rise of Tiamat</option>
+                <option value="45">The Wild Beyond the Witchlight</option>
+                <option value="46">Tomb of Annihilation</option>
+                <option value="47">Turn of Fortune’s Wheel</option>
+                <option value="48">Van Richten’s Guide to Ravenloft</option>
+                <option value="49">Vecna: Eve of Ruin</option>
+                <option value="50">Volo’s Guide to Monsters</option>
+                <option value="51">Waterdeep: Dragon Heist</option>
+                <option value="52">Waterdeep: Dungeon of the Mad Mage</option>
+                <option value="53">Xanathar’s Guide to Everything</option>
+            </select>
+        </div>
+    </div>
+    <div id="TableWithCreaturesContainer">
+        <table id="Creatures" class="table table-bordered table-striped">
+            <thead id="CreaturesHeadOfTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </thead>
+            <tbody id="CreaturesTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const dataCreatures = @Html.Raw(Json.Serialize(Model));
+</script>
+<partial name="_ComeBackButton" />
+<script src="~/js/CreaturesViewer/CreatureDisplayer.js" asp-append-version="true"></script>
+<script src="~/js/CreaturesViewer/CreaturesViewerScript.js" asp-append-version="true"></script>
+

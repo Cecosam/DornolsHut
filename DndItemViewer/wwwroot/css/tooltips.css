@@ -1,0 +1,348 @@
+﻿/*Tooltips*/
+.tooltipCust {
+    display: inline-block;
+    position: relative;
+    border-bottom: 1px dotted #666;
+    padding-right: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+    .tooltipCust .bottom {
+        min-width: 80vw;
+        top: 60px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/tree.jpg");
+        font-weight: normal;
+        font-size: 15px;
+        border: double;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .bottom {
+        display: block;
+    }
+
+    .tooltipCust .bottom i {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -12px;
+        width: 24px;
+        height: 12px;
+        overflow: hidden;
+    }
+
+        .tooltipCust .bottom i::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 50%;
+            transform: translate(-50%,50%) rotate(45deg);
+            background-color: #EEEEEE;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    .tooltipCust .hiddenTooltip {
+        min-width: 30vw;
+        top: -20px;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/eyes.jpeg");
+        font-weight: normal;
+        font-size: 15px;
+        border: double;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+        visibility: hidden;
+    }
+
+    .tooltipCust:hover .hiddenTooltip {
+        display: block;
+    }
+
+    .tooltipCust .hiddenTooltip i {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -12px;
+        width: 24px;
+        height: 12px;
+        overflow: hidden;
+    }
+
+        .tooltipCust .hiddenTooltip i::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background-color: #EEEEEE;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+    .tooltipCust .topCust {
+        min-width: 30vw;
+        top: -20px;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/eyes.jpeg");
+        font-weight: normal;
+        font-size: 15px;
+        border: double;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .topCust {
+        display: block;
+    }
+
+    .tooltipCust .topCust i {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -12px;
+        width: 24px;
+        height: 12px;
+        overflow: hidden;
+    }
+
+        .tooltipCust .topCust i::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 50%;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background-color: #EEEEEE;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+    .tooltipCust .leftCustUp {
+        min-width: 30vw;
+        top: 50%;
+        right: 100%;
+        margin-right: 20px;
+        transform: translate(0, -25%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/eyes.jpeg");
+        font-weight: normal;
+        font-size: 15px;
+        border: double;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .leftCustUp {
+        display: block;
+    }
+
+    .tooltipCust .leftCustUp i {
+        position: absolute;
+        top: 25%;
+        left: 100%;
+        margin-top: -12px;
+        width: 12px;
+        height: 24px;
+        overflow: hidden;
+    }
+
+        .tooltipCust .leftCustUp i::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 0;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(-45deg);
+            background-color: #EEEEEE;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+    .tooltipCust .leftCustDown {
+        min-width: 30vw;
+        top: 50%;
+        right: 100%;
+        margin-right: 20px;
+        transform: translate(0, -75%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/eyes.jpeg");
+        font-weight: normal;
+        font-size: 15px;
+        border: double;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .leftCustDown {
+        display: block;
+    }
+
+    .tooltipCust .leftCustDown i {
+        position: absolute;
+        top: 75%;
+        left: 100%;
+        margin-top: -12px;
+        width: 12px;
+        height: 24px;
+        overflow: hidden;
+    }
+
+        .tooltipCust .leftCustDown i::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 0;
+            top: 50%;
+            transform: translate(-50%,-50%) rotate(-45deg);
+            background-color: #EEEEEE;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+    .tooltipCust .rightCustUp {
+        min-width: 50vw;
+        top: 50%;
+        left: 100%;
+        margin-left: 20px;
+        transform: translate(0, -15%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/tree.jpg");
+        font-weight: normal;
+        font-size: 15px;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .rightCustUp {
+        display: block;
+    }
+
+    .tooltipCust .rightCustUp .fixForIElementsInTooltip {
+        position: absolute;
+        top: 15%;
+        right: 100%;
+        margin-top: -12px;
+        width: 12px;
+        height: 24px;
+        overflow: hidden;
+    }
+
+    .tooltipCust .rightCustUp .fixForIElementsInTooltip::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 0;
+        top: 50%;
+        transform: translate(50%,-50%) rotate(-45deg);
+        background-color: #EEEEEE;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    .tooltipCust .rightCustDown {
+        min-width: 50vw;
+        top: 50%;
+        left: 100%;
+        margin-left: 20px;
+        transform: translate(0, -85%);
+        padding: 10px 20px;
+        color: #FFFFFF;
+        background-image: url("/tree.jpg");
+        font-weight: normal;
+        font-size: 15px;
+        border-color: #999999;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 99999999;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        display: none;
+    }
+
+    .tooltipCust:hover .rightCustDown {
+        display: block;
+    }
+
+    .tooltipCust .rightCustDown .fixForIElementsInTooltip {
+        position: absolute;
+        top: 85%;
+        right: 100%;
+        margin-top: -12px;
+        width: 12px;
+        height: 24px;
+        overflow: hidden;
+    }
+
+    .tooltipCust .rightCustDown .fixForIElementsInTooltip::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 0;
+        top: 50%;
+        transform: translate(50%,-50%) rotate(-45deg);
+        background-color: #EEEEEE;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }

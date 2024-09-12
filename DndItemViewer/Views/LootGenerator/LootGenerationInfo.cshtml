@@ -1,0 +1,39 @@
+﻿<div id="mainLootGenerationInfo">
+    <link rel="stylesheet" href="~/css/lootGeneratorStyleSheet.css" />
+    <div class="card bg-dark mb-3 vh-100 opacity-custom-95" style="overflow: auto;">
+        <div class="card-header bg-dark text-light">Loot Generator Info</div>
+        <div class="card-body">
+            <p class="text-light">
+                The creature's rating plays a crucial role in this loot generator, directly influencing the rarity of the items you can obtain.
+                As the creature's rating increases, so does the likelihood of acquiring more valuable loot. You can explore all potential loot in the "Gear" tab on the site.
+            </p>
+            <p class="text-light">
+                Each item type has its own drop probability. Potions have the highest chance at 20%, followed by weapons, armor, and treasures at 15%.
+                There's a 10% chance for rings or wondrous items, 5% for poisons, and the remainder is allocated to wands, rods and staves.
+            </p>
+            <p class="text-light">
+                The number of items dropped is also determined by the creature's rating, calculated as CR/5 + 1d4. For example,
+                if the creature has a CR of 3, you'll receive 1d4 items. If the CR is 12, you'll get 2 + 1d4 items.
+            </p>
+            <p class="text-light">
+                Certain creatures carry specific equipment with them, which can be found in the "Personal Items" table. The rarity of these items is, once again, determined by the creature's CR.
+            </p>
+            <p class="text-light mb-5">
+                Additionally, many creatures yield specific items that can be harvested. These can be used to craft various items or sold for profit.
+            </p>
+            <br />
+            <p class="text-light">
+                Enter the CR in this field to view the drop chances for each rarity level:
+            </p>
+            <input id="CrInputInModal" style="width: 100px" type="text" autocomplete="off" placeholder="CR Here"></input>
+            <p id="ParagraphCommon" class="text-light">Common: 0%</p>
+            <p id="ParagraphUncommon" class="text-light">Uncommon: 0%</p>
+            <p id="ParagraphRare" class="text-light">Rare: 0%</p>
+            <p id="ParagraphVeryRare" class="text-light">Very rare: 0%</p>
+            <p id="ParagraphLegendary" class="text-light">Legendary: 0%</p>
+            <br />
+            <p class="text-light">And about the gold? I really think you don't need generator for that.</p>
+        </div>
+    </div>
+    <script src="~/js/LootGenerator/LootGeneratorInfoScripts.js" asp-append-version="true" charset="utf-8"></script>
+</div>

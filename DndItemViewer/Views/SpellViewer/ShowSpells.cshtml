@@ -1,0 +1,91 @@
+﻿@model List<Spell>
+@using DndItemViewer.Helpers
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<partial name="_LoadingScreenPartial" />
+<div hidden id="ShowSpellsMainDiv" class="bg-primary-subtle opacity-custom-95 p-3">
+    <div class="card bg-primary mb-3" style="max-width: 100%;">
+        <div class="card-body" style="max-width: 100%;">
+            <div class="d-flex justify-content-center"><p class="text-light">Filters:</p></div>
+            <div class="d-flex justify-content-center">
+                <div class="floatLeft">
+                    <div class="floatLeft text-light">Level:</div>
+                    <div class="floatLeft">
+                        <select name="spellLevelsInput" id="spellLevelsInput">
+                            <option value="10" selected="">All</option>
+                            <option value="0">Cantrips</option>
+                            <option value="1">Level 1</option>
+                            <option value="2">Level 2</option>
+                            <option value="3">Level 3</option>
+                            <option value="4">Level 4</option>
+                            <option value="5">Level 5</option>
+                            <option value="6">Level 6</option>
+                            <option value="7">Level 7</option>
+                            <option value="8">Level 8</option>
+                            <option value="9">Level 9</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="floatLeft">
+                    <div class="floatLeft text-light">School: </div>
+                    <div class="floatLeft">
+                        <select name="spellSchoolsInput" id="spellSchoolsInput">
+                            <option value="All" selected="">All</option>
+                            <option value="Abjuration">Abjuration</option>
+                            <option value="Transmutation">Transmutation</option>
+                            <option value="Conjuration">Conjuration</option>
+                            <option value="Divination">Divination</option>
+                            <option value="Enchantment">Enchantment</option>
+                            <option value="Illusion">Illusion</option>
+                            <option value="Evocation">Evocation</option>
+                            <option value="Necromancy">Necromancy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="floatLeft">
+                    <div class="floatLeft text-light">Class: </div>
+                    <div class="floatLeft">
+                        <select name="spellClassesInput" id="spellClassesInput">
+                            <option value="All" selected="">All</option>
+                            <option value="Bard">Bard</option>
+                            <option value="Cleric">Cleric</option>
+                            <option value="Druid">Druid</option>
+                            <option value="Paladin">Paladin</option>
+                            <option value="Ranger">Ranger</option>
+                            <option value="Sorcerer">Sorcerer</option>
+                            <option value="Warlock">Warlock</option>
+                            <option value="Wizard">Wizard</option>
+                            <option value="Rogue">Rogue</option>
+                            <option value="Artificer">Artificer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: left;" class="mt-4 d-flex justify-content-around">
+                <button id="filterSpellsButton" type="submit" class="btn btn-info">Filter Spells</button>
+            </div>
+        </div>
+    </div>
+    <div id="TableWithSpellsContainer">
+        <table class="table table-bordered table-striped">
+            <thead id="SpellsHeadOfTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </thead>
+            <tbody id="SpellsTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    const filterLevel = @TempData[Constants.SPELL_LEVEL_FILTER_TEXT];
+    const filterSchool = '@TempData[Constants.SPELL_SCHOOL_FILTER_TEXT]';
+    const filterClass = '@TempData[Constants.SPELL_CLASS_FILTER_TEXT]';
+    const data = @Html.Raw(Json.Serialize(Model));
+</script>
+<partial name="_ComeBackButton" />
+<script src="~/js/SpellsViewer/SpellDisplayer.js" asp-append-version="true"></script>
+<script src="~/js/SpellsViewer/SpellViewerScripts.js" asp-append-version="true"></script>
+

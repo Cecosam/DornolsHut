@@ -1,0 +1,94 @@
+﻿@model Tuple<List<ICreatureForLootGenerator>, List<dynamic>>
+<partial name="_LoadingScreenPartial" />
+<div id="mainLootGeneratorDiv" hidden>
+    <link rel="stylesheet" href="~/css/lootGeneratorStyleSheet.css" />
+    <div class="card bg-primary-subtle mb-3" style="max-width: 100%;">
+        <div class="card-header text-light">DnD 5e Loot Table Generator. Have Fun!</div>
+        <div class="card-body d-flex justify-content-between">
+            <span class="floatLeft">
+                <button id="AddCreatureButton" type="button" class="btn btn-success">Add Creature</button>
+                <p class="text-light">Add some creatures and get individual loot for each one.</p>
+            </span>
+            <span class="floatLeft">
+                <button id="LootGenerationInfo" type="button" class="btn btn-info">Loot Generation Info</button>
+            </span>
+        </div>
+    </div>
+    <div id="lootGeneratorContent">
+        <div id="creaturesDiv">
+            <ul id="creaturesUl" class="list-group opacity-custom-95">
+            </ul>
+        </div>
+        <div id="lootDiv">
+            <div id="lootableItemsPersonal" hidden class="card bg-secondary mb-3 opacity-custom-95">
+                <div class="card-header text-light">Personal Items</div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead id="LootPersonalHeadOfTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </thead>
+                        <tbody id="LootPersonalTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="lootableItems" hidden class="card bg-secondary mb-3 opacity-custom-95">
+                <div class="card-header text-light">Hoard Items</div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead id="LootHeadOfTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </thead>
+                        <tbody id="LootTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="harvestableItems" hidden class="card bg-secondary opacity-custom-95">
+                <div class="card-header text-light">Harvestable Items</div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead id="HarvestHeadOfTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </thead>
+                        <tbody id="HarvestTable" class="opacity-custom-95">
+                            @* Js fills the table *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Modal" hidden role="dialog" class="modal center-screen">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-light"></h5>
+                    <button id="CloseModalAsX" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body bg-secondary" />
+                <div id="ModalContent" class="container">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="ModalButton" type="button" class="btn btn-success"></button>
+                <button id="CloseModalAsButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var data = @Html.Raw(Json.Serialize(Model.Item1));
+        var sessionData = @Html.Raw(Json.Serialize(Model.Item2));
+    </script>
+</div>
+<script src="~/js/LootGenerator/CreatureAdder.js" asp-append-version="true" charset="utf-8"></script>
+<script src="~/js/LootGenerator/CreatureRemover.js" asp-append-version="true" charset="utf-8"></script>
+<script src="~/js/LootGenerator/LootDisplayer.js" asp-append-version="true" charset="utf-8"></script>
+<script src="~/js/LootGenerator/LootGenerator.js" asp-append-version="true" charset="utf-8"></script>
+<script src="~/js/LootGenerator/LootGeneratorManager.js" asp-append-version="true" charset="utf-8"></script>
+<script src="~/js/LootGenerator/LootGeneratorScripts.js" asp-append-version="true" charset="utf-8"></script>
+

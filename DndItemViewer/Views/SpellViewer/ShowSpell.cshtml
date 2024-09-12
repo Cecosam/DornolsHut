@@ -1,0 +1,58 @@
+﻿@using DnDLootGenerator.Models.Enumerations
+@using DndItemViewer.Helpers;
+@using System.ComponentModel.DataAnnotations
+@model Spell
+
+<div id="ShowItemMainDiv" style="overflow: auto;" class="bg-dark vh-100 opacity-custom-95 p-3">
+    <p class="text-light h1">@Model.SpellName</p>
+    <br />
+    <br />
+    @{
+        var spellLevel = ((SpellLevelElumeration)Model.SpellLevel).GetAttribute<DisplayAttribute>().Name;
+        <p class="text-light mb-0"><strong>Spell Level: </strong>@spellLevel</p>
+    }
+    <p class="text-light mb-0"><strong>Spell School: </strong>@Model.School</p>
+    @if (@Model.IsRitual)
+    {
+        <p class="text-light mb-0"><strong>Ritual: </strong>The ritual version of a spell takes 10 minutes longer to cast than normal and it doesn’t expend a spell slot</p>
+    }
+    <p class="text-light mb-0"><strong>Casting Time: </strong>@Model.CastingTime</p>
+    <p class="text-light mb-0"><strong>Range: </strong>@Model.Range</p>
+    <p class="text-light mb-0"><strong>Components: </strong>@Model.Components</p>
+    @if (@Model.MaterialComponent != string.Empty)
+    {
+        <p class="text-light mb-0"><strong>Materials Needed: </strong>@Model.MaterialComponent</p>
+    }
+    <p class="text-light mb-0"><strong>Duration: </strong>@Model.Duration</p>
+    @if (@Model.DamageType != string.Empty)
+    {
+        <p class="text-light mb-0"><strong>Type Of Damage: </strong>@Model.DamageType</p>
+    }
+    @if (@Model.SavingThrow != string.Empty)
+    {
+        <p class="text-light mb-0"><strong>Saving Throw: </strong>@Model.SavingThrow</p>
+    }
+    @if (@Model.Conditions != string.Empty)
+    {
+        <p class="text-light mb-0"><strong>Conditions: </strong>@Model.Conditions</p>
+    }
+    <p class="text-light mb-0"><strong>Castable By: </strong>@Model.Classes</p>
+    <br />
+    <br />
+    <p class="text-light h3">Description</p>
+    <p id="descriptionForSpell" class="text-light"></p>
+    <br />
+    @if (@Model.AtHighLevels != string.Empty)
+    {
+        <p class="text-light h3">At Higher Levels</p>
+        <p class="text-light mb-0">@Model.AtHighLevels</p>
+    }
+    <br />
+    <br />
+    <a href="https://dndstore.wizards.com/" target="_blank">Source: @Model.Source</a>
+
+</div>
+<script type="text/javascript">
+    const spell = @Html.Raw(Json.Serialize(Model));
+</script>
+<script src="~/js/SpellsViewer/ShowSpellScripts.js"></script>

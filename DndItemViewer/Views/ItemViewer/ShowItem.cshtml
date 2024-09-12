@@ -1,0 +1,117 @@
+﻿@model IItem
+@using DndItemViewer.Helpers;
+@using System.ComponentModel.DataAnnotations
+<div id="ShowItemMainDiv" style="overflow: auto;" class="bg-dark vh-100 opacity-custom-95 p-3">
+    <p class="text-light h1">@Model.Name</p>
+    <br />
+    <br />
+    <div id="description" class="text-light"><b>Description: </b></div>
+    <br />
+    @if (Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.WondrousItems)
+    {
+        @if ((Model as Item).Attunement)
+        {
+            <p class="text-light mb-0"><strong>This Item Require Attunement</strong></p>
+        }
+    }
+    <br />
+    @{
+        var type = Model.Type.GetAttribute<DisplayAttribute>().Name;
+        <p class="text-light mb-0"><strong>Type: </strong>@type</p>
+    }
+    @{
+        var category = Model.Category.GetAttribute<DisplayAttribute>().Name;
+        <p class="text-light mb-0"><strong>Category: </strong>@category</p>
+    }
+
+    @{
+        var rarity = Model.Rarity.GetAttribute<DisplayAttribute>().Name;
+        <p class="text-light mb-0"><strong>Rarity: </strong>@rarity</p>
+    }
+    <p class="text-light"><strong>Weight: </strong>@Model.Weight lb</p>
+    @if (Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.Treasures)
+    {
+        <p class="text-light"><strong>Cost: </strong>@Model.Cost gp</p>
+    }
+    <br />
+    @if (Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.Armors)
+    {
+        Armor armor = @Model as Armor;
+        <p class="text-light mb-0"><strong>AC: </strong>@armor.ArmorClass</p>
+        <p class="text-light mb-0"><strong>Armor Type: </strong>@armor.ArmorType</p>
+        @if (armor.IsWithDisatvantage)
+        {
+            <p class="text-light mb-0"><strong>Stealth: </strong>Disadvantage</p>
+        }
+        @if (armor.NeededStrength != 0)
+        {
+            <p class="text-light mb-0"><strong>Needed Strength: </strong>@armor.NeededStrength</p>
+        }
+    }
+    @if (Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.SimpleWeapons ||
+    Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.MartialWeapons)
+    {
+        Weapon weapon = @Model as Weapon;
+        if (weapon.IsVersatile == true)
+        {
+            <p class="text-light mb-0"><strong>Damage: </strong>@weapon.Damage (@weapon.VersatileDamage)</p>
+        }
+        else
+        {
+            <p class="text-light mb-0"><strong>Damage: </strong>@weapon.Damage</p>
+        }
+        <p class="text-light mb-0"><strong>Damage Type: </strong>@weapon.DamageType</p>
+        if (weapon.AdditionalInfo != "")
+        {
+            <p class="text-light"><strong>Properties: </strong>@weapon.AdditionalInfo</p>
+        }
+        <br />
+        if (weapon.IsLight == true)
+        {
+            <p class="text-light"><strong>Light: </strong>@Constants.LIGHT_WEAPON_MSG</p>
+        }
+        if (weapon.IsHeavy == true)
+        {
+            <p class="text-light"><strong>Heavy: </strong>@Constants.HEAVY_WEAPON_MSG</p>
+        }
+        if (weapon.IsReach == true)
+        {
+            <p class="text-light"><strong>Reach: </strong>@Constants.REACH_WEAPON_MSG</p>
+        }
+        if (weapon.IsFinesse == true)
+        {
+            <p class="text-light"><strong>Finesse: </strong>@Constants.FINESSE_WEAPON_MSG</p>
+        }
+        if (weapon.IsLoading == true)
+        {
+            <p class="text-light"><strong>Loading: </strong>@Constants.LOADING_WEAPON_MSG</p>
+        }
+        if (weapon.IsRanged == true)
+        {
+            <p class="text-light"><strong>Range: </strong>@Constants.RANGE_WEAPON_MSG</p>
+        }
+        if (weapon.IsVersatile == true)
+        {
+            <p class="text-light"><strong>Versatile: </strong>@Constants.VERSATILE_WEAPON_MSG</p>
+        }
+        if (weapon.Slot == "twohand")
+        {
+            <p class="text-light"><strong>Two-handed: </strong>@Constants.TWO_HANDED_WEAPON_MSG</p>
+        }
+    }
+    @if (Model.Category == DnDLootGenerator.Models.Enumerations.CategoryEnumeration.Poisons)
+    {
+        Poison poison = @Model as Poison;
+        <p class="text-light mb-0"><strong>Poison: </strong>@poison.PoisonTypes</p>
+    }
+    <br />
+    <br />
+    <a href="https://dndstore.wizards.com/" target="_blank">Source: @Model.Source</a>
+
+</div>
+<script type="text/javascript">
+    const data = @Html.Raw(Json.Serialize(Model));
+    window.addEventListener("load", function () {
+        $('#description').append(data.description);
+    }, false);
+</script>

@@ -1,0 +1,13 @@
+﻿@model HarvestableItem
+<div id="ShowItemMainDiv" style="overflow: auto;" class="bg-dark vh-100 opacity-custom-95 p-3">
+    <p class="text-light h1">@Model.Name</p>
+    <br />
+    <br />
+    <p class="text-light mb-0"><strong>Harvestable From: </strong>@Model.ItemFor</p>
+    <p class="text-light mb-0"><strong>Weight: </strong>@Model.Weight lb.</p>
+    <p class="text-light mb-0"><strong>Skill Check To Harvest: </strong>@Model.Skill</p>
+    <p class="text-light mb-0"><strong>DC: </strong>@Model.Dc</p>
+    <br />
+    <p class="text-light"><strong>Description: </strong>@Model.Description</p>
+    <br />   
+</div>

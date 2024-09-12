@@ -1,0 +1,253 @@
+
+
+html {
+    font-size: 14px;
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    background-image: url("/background.jpg");
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin: 0 0 60px 0;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .container-custom {
+        width: 100% !important;
+    }
+
+    #welcomeText {
+        width: 100% !important;
+    }
+}
+
+.floatLeft {
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.container-custom {
+    width: 85%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.column1 {
+    float: left;
+    width: 8%;
+    padding: 1px;
+}
+
+.column2 {
+    float: left;
+    width: 91%;
+    padding: 1px;
+}
+
+.column3 {
+    float: left;
+    width: 82%;
+    padding: 1px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.opacity-custom-95 {
+    opacity: 0.95 !important;
+}
+
+.column1 > table > tbody > tr > td:hover {
+    background-color: #94a5b3;
+}
+
+/*Some css for the arrow down icon that is next to the ordered by property*/
+.downArrow {
+    float: left;
+    display: inline;
+}
+
+/*Width for Items(Rings,Potions,Treasures) Table*/
+.Name {
+    width: 10%;
+}
+
+.Weight {
+    width: 12%;
+}
+
+.Rarity {
+    width: 10%;
+}
+
+.Cost {
+    width: 10%;
+}
+
+
+/*Width for Armors Table*/
+.NameArmor {
+    width: 10%;
+}
+
+.ArmorTypeArmor {
+    width: 8%;
+}
+
+.ACArmor {
+    width: 8%;
+}
+
+.AdditionalInfoArmor {
+    width: 15%;
+}
+
+.WeightArmor {
+    width: 8%;
+}
+
+.RarityArmor {
+    width: 8%;
+}
+
+/*Width for Weapons Table*/
+.NameWeapon {
+    width: 8%;
+}
+
+.DescriptionWeapon {
+    width: 45%;
+}
+
+.DamageWeapon {
+    width: 16%;
+}
+
+.AdditionalInfoWeapon {
+    width: 19%;
+}
+
+.WeightWeapon {
+    width: 7%;
+}
+
+.RarityWeapon {
+    width: 5%;
+}
+
+/*Width for Poisons Table*/
+.NamePoison {
+    width: 10%;
+}
+
+.DescriptionPoison {
+    width: 40%;
+}
+
+
+.PoisonTypePoison {
+    width: 34%;
+}
+
+.WeightPoison {
+    width: 8%;
+}
+
+
+.CostPoison {
+    width: 8%;
+}
+
+
+/*Width for Spells Table*/
+.LevelSpell {
+    width: 15%;
+}
+
+
+.ComponentsSpell {
+    width: 15%;
+}
+
+.SchoolSpell {
+    width: 12%;
+}
+
+/*Search box input LootGenerator Modal*/
+#ModalContent {
+    position: relative;
+}
+
+.searchBoxModal {
+    background-color: #515960;
+    position: absolute;
+    z-index: 9999;
+    width: 93%;
+    left: 10px;
+}
+
+.InputForModal {
+    width: 100%;
+}
+
+    .InputForModal:focus {
+        border-color: none;
+        box-shadow: none;
+        outline: none
+    }
+
+#ModalContent i {
+    position: absolute;
+    top: 12px;
+    left: -10px;
+    font-size: 24px;
+    color: #eee
+}
+
+/*Filter info for creatures filter*/
+#searchBoxInfo {
+    width: 90%;
+    border: thick;
+    border-radius: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+
+
+
+
+

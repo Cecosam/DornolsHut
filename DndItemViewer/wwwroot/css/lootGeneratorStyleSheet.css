@@ -1,0 +1,37 @@
+﻿
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+#creaturesDiv {
+    float: left;
+    padding: 1px;
+/*    width: 50%;*/
+}
+
+#lootDiv {
+    float: left;
+    /*width: 50%;*/
+    padding: 1px;
+}
+#creaturesUl > li {
+    font-size: 1rem;
+}
+
+.flex-row-c {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-group-mine .list-group-item {
+    background-color: #f1f9fb;
+}
+
+#creaturesUl {
+    margin-bottom: 4.5rem !important;
+}

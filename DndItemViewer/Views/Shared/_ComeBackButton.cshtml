@@ -1,0 +1,21 @@
+﻿<script type="text/javascript">
+    window.addEventListener("scroll", (event) => {
+        let scroll = this.scrollY;
+
+        var comeBackButton = document.getElementById("ComeBackButton");
+        //1731 magic number
+        if (scroll > 1731) {
+            comeBackButton.hidden = false;
+        }
+        else {
+            comeBackButton.hidden = true;
+        }
+    });
+
+    function moveScrollToPositionZero() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
+</script>
+<div id="ComeBackButton" hidden class="text-center fixed-bottom" style="margin-bottom: 4rem; z-index:100;">
+    <button type="button" onclick="moveScrollToPositionZero()" class="btn btn-success">Do you want to go back? Come and lets have some tea!</button>
+</div>

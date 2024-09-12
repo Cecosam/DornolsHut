@@ -1,0 +1,113 @@
+﻿@using DnDLootGenerator.Models.Enumerations
+@using DndItemViewer.Helpers
+@model List<Weapon>
+<partial name="_LoadingScreenPartial" />
+<div hidden id="ShowItemsMainDiv" class="bg-primary-subtle opacity-custom-95 p-3">
+    <div class="card bg-primary mb-3" style="max-width: 100%;">
+        <div class="card-body">
+            <div class="d-flex justify-content-center"><p class="text-light">Choose Items:</p></div>
+            <div class="d-flex justify-content-center">
+                <div class="floatLeft">
+                    <div class="floatLeft text-light">Items: </div>
+                    <div class="floatLeft">
+                        <select name="ItemsInput" id="ItemsInput" onchange="onItemsInputChange(this)">
+                            <option value="3" selected="">Armors</option>
+                            <option value="6">Martial Weapons</option>
+                            <option value="5">Simple Weapons</option>
+                            <option value="2">Rings</option>
+                            <option value="8">Staffs</option>
+                            <option value="9">Wands</option>
+                            <option value="7">Rods</option>
+                            <option value="1">Treasures</option>
+                            <option value="0">Potions</option>
+                            <option value="4">Poisons</option>
+                            <option value="10">Wondrous</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="additionalSelectDiv" class="floatLeft">
+                    <div class="floatLeft text-light">Weapons: </div>
+                    <div class="floatLeft">
+
+                        @if ((int)TempData[Constants.ITEM_CATEGORY_MSG] == (int)CategoryEnumeration.SimpleWeapons)
+                        {
+                            <select name="WeaponTypeInput" id="SimpleWeaponTypeInput">
+                                <option value="0" selected="">Club</option>
+                                <option value="1">Dagger</option>
+                                <option value="2">Greatclub</option>
+                                <option value="3">Handaxe</option>
+                                <option value="4">Javelin</option>
+                                <option value="5">Light Hammer</option>
+                                <option value="6">Mace</option>
+                                <option value="7">Quarterstaff</option>
+                                <option value="8">Sickle</option>
+                                <option value="9">Spear</option>
+                                <option value="10">Crossbow, Light</option>
+                                <option value="11">Dart</option>
+                                <option value="12">Shortbow</option>
+                                <option value="13">Sling</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <select name="WeaponTypeInput" id="MartialWeaponTypeInput">
+                                <option value="14" selected="">Battleaxe</option>
+                                <option value="15">Flail</option>
+                                <option value="16">Glaive</option>
+                                <option value="17">Greataxe</option>
+                                <option value="18">Greatsword</option>
+                                <option value="19">Halberd</option>
+                                <option value="20">Lance</option>
+                                <option value="21">Longsword</option>
+                                <option value="22">Maul</option>
+                                <option value="23">Morningstar</option>
+                                <option value="24">Pike</option>
+                                <option value="25">Rapier</option>
+                                <option value="26">Scimitar</option>
+                                <option value="27">Shortsword</option>
+                                <option value="28">Trident</option>
+                                <option value="29">War Pick</option>
+                                <option value="30">Warhammer</option>
+                                <option value="31">Whip</option>
+                                <option value="32">Blowgun</option>
+                                <option value="33">Crossbow, Hand</option>
+                                <option value="34">Crossbow, Heavy</option>
+                                <option value="35">Longbow</option>
+                            </select>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div style="clear: left;" class="mt-4 d-flex justify-content-around">
+                <button id="showButton" type="submit" class="btn btn-info" onclick="FilterItems()">Show</button>
+            </div>
+        </div>
+    </div>
+    <div id="TableWithItemsContainer">
+        <table class="table table-bordered table-striped">
+            <thead id="WeaponsHeadOfTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </thead>
+            <tbody id="WeaponsTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    const display = @TempData[Constants.ITEM_CATEGORY_MSG];
+    const data = @Html.Raw(Json.Serialize(Model));
+    document.getElementById("ItemsInput").value = @TempData[Constants.ITEM_CATEGORY_MSG];
+    let simpleWeapons = document.getElementById("SimpleWeaponTypeInput");
+    if (simpleWeapons) {
+        simpleWeapons.value = @TempData[Constants.ITEM_TO_DISPLAY_MSG];
+    }
+    else {
+        document.getElementById("MartialWeaponTypeInput").value = @TempData[Constants.ITEM_TO_DISPLAY_MSG];
+    }   
+</script>
+<partial name="_ComeBackButton" />
+<script type="module" src="~/js/ItemsViewer/ItemViewerScriptForWeapons.js"></script>
+
+

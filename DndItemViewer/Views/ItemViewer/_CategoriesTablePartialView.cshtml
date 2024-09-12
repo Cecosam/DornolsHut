@@ -1,0 +1,77 @@
+﻿@using DndItemViewer.Helpers
+<script type="text/javascript">
+    var activeCategory = '@TempData["Item Category"]';
+
+    window.addEventListener("load", function () {
+        var elements = document.getElementsByClassName("categoriesNames");
+        $.each(elements, function (i, element) {
+            if (element.id == activeCategory) {
+                element.className = "table-info categoriesNames";
+            }
+            else {
+                element.className = "table-active categoriesNames";
+            }
+        });
+    }, false);
+</script>
+<div class="column1">
+    <table class="table table-bordered table-active">
+        <thead class="opacity-custom-95">
+            <tr>
+                <th>Categories</th>
+            </tr>
+        </thead>
+        <tbody class="opacity-custom-95">
+            <tr id="@Constants.ARMORS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowArmors" asp-route-name="Padded">@Constants.ARMORS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.SIMPLE_WEAPONS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowWeapons" asp-route-category="@Constants.SIMPLE_WEAPONS_TEXT" asp-route-name="Club">@Constants.SIMPLE_WEAPONS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.MARTIAL_WEAPONS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowWeapons" asp-route-category="@Constants.MARTIAL_WEAPONS_TEXT" asp-route-name="Battleaxe">@Constants.MARTIAL_WEAPONS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.RINGS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.RINGS_TEXT">@Constants.RINGS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.RODS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.RODS_TEXT">@Constants.RODS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.STAFFS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.STAFFS_TEXT">@Constants.STAFFS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.WANDS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.WANDS_TEXT">@Constants.WANDS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.TREASURES_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.TREASURES_TEXT">@Constants.TREASURES_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.POTIONS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowItems" asp-route-category="@Constants.POTIONS_TEXT">@Constants.POTIONS_TEXT</a>
+                </td>
+            </tr>
+            <tr id="@Constants.POISONS_TEXT" class="categoriesNames">
+                <td>
+                    <a class="nav-link text-uppercase" asp-controller="ItemViewer" asp-action="ShowPoisons">@Constants.POISONS_TEXT</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

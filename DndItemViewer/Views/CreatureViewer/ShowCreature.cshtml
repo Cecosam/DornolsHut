@@ -1,0 +1,45 @@
+﻿@using DnDLootGenerator.Models.Enumerations
+@using DndItemViewer.Helpers;
+@using System.ComponentModel.DataAnnotations
+@model Creature
+
+<div id="ShowItemMainDiv" style="overflow: auto;" class="bg-dark vh-100 opacity-custom-95 p-3">
+    <div id="descriptionForCreature" class="text-light d-inline-block w-100  p-2">
+        <h1>@Model.Name</h1>
+        <div class='text-light'>
+            @* <div>Medium humanoid (Aarakocra), neutral good</div> *@
+            @{
+                var size = Model.Size.GetAttribute<DisplayAttribute>().Name;
+                <div>@size @Model.Type, @Model.Alignment</div>
+            }
+            <partial name="_CurvyLinePartial" />
+            <div>
+                <strong>Armor Class: </strong>@Model.AC<br>
+                <strong>Hit Points: </strong>@Model.HP<br>
+                <strong>Speed: </strong>@Model.MovementTypes<br>
+                @{
+                    var stats = Model.Stats.Split("@");
+                    <div></div>
+                    <div class='d-inline-block p-1 m-0'><strong>STR</strong><br>@stats[0]</div>
+                    <div class='d-inline-block p-1 m-0'><strong>DEX</strong><br>@stats[1]</div>
+                    <div class='d-inline-block p-1 m-0'><strong>CON</strong><br>@stats[2]</div>
+                    <div class='d-inline-block p-1 m-0'><strong>INT</strong><br>@stats[3]</div>
+                    <div class='d-inline-block p-1 m-0'><strong>WIS</strong><br>@stats[4]</div>
+                    <div class='d-inline-block p-1 m-0'><strong>CHA</strong><br>@stats[5]</div>
+                    <div></div>
+                }
+            </div>
+            <partial name="_CurvyLinePartial" />
+            <div id="skills"> </div>
+            <partial name="_CurvyLinePartial" />
+            <div id="info"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <a href="https://dndstore.wizards.com/" target="_blank" class="text-light">Source: @Model.Source</a>
+</div>
+<script type="text/javascript">
+    const creature = @Html.Raw(Json.Serialize(Model));
+</script>
+<script src="~/js/CreaturesViewer/ShowCreatureScripts.js" asp-append-version="true"></script>

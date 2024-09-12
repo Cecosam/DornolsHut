@@ -1,0 +1,54 @@
+﻿@model List<Poison>
+@using DndItemViewer.Helpers
+<partial name="_LoadingScreenPartial" />
+<div hidden id="ShowItemsMainDiv" class="bg-primary-subtle opacity-custom-95 p-3">
+    <div class="card bg-primary mb-3" style="max-width: 100%;">
+        <div class="card-body">
+            <div class="d-flex justify-content-center"><p class="text-light">Choose Items:</p></div>
+            <div class="d-flex justify-content-center">
+                <div class="floatLeft">
+                    <div class="floatLeft text-light">Items: </div>
+                    <div class="floatLeft">
+                        <select name="ItemsInput" id="ItemsInput" onchange="onItemsInputChange(this)">
+                            <option value="3" selected="">Armors</option>
+                            <option value="6">Martial Weapons</option>
+                            <option value="5">Simple Weapons</option>
+                            <option value="2">Rings</option>
+                            <option value="8">Staffs</option>
+                            <option value="9">Wands</option>
+                            <option value="7">Rods</option>
+                            <option value="1">Treasures</option>
+                            <option value="0">Potions</option>
+                            <option value="4">Poisons</option>
+                            <option value="10">Wondrous</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: left;" class="mt-4 d-flex justify-content-around">
+                <button id="showButton" type="submit" class="btn btn-info" onclick="FilterItems()">Show</button>
+            </div>
+        </div>
+    </div>
+    <div id="TableWithItemsContainer">
+        <table class="table table-bordered table-striped">
+            <thead id="PoisonsHeadOfTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </thead>
+            <tbody id="PoisonsTable" class="opacity-custom-95">
+                @* Js fills the table *@
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+
+    const display = @TempData[Constants.ITEM_CATEGORY_MSG];
+    const data = @Html.Raw(Json.Serialize(Model));
+    document.getElementById("ItemsInput").value = @TempData[Constants.ITEM_CATEGORY_MSG];
+</script>
+<partial name="_ComeBackButton" />
+<script type="module" src="~/js/ItemsViewer/ItemViewerScriptForPoisons.js"></script>
+
+
+
