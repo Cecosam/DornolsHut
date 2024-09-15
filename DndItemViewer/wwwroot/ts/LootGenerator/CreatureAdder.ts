@@ -13,7 +13,14 @@ class CreatureAdder {
         liElement.setAttribute("id", creatureLiElementId as unknown as string);
 
         let span: HTMLElement = document.createElement("span");
-        span.appendChild(this.createSpan(`Name: ${creatureToAdd.name}`));
+        let linkToCreature: HTMLAnchorElement = document.createElement("a");
+        linkToCreature.href = `/CreatureViewer/ShowCreature?Id=${creatureToAdd.id}`;
+        linkToCreature.innerText = `${creatureToAdd.name}`;
+        //linkToCreature.className = "ms-2 d-block";
+        let spanWithThelinkToCreature = this.createSpan(`Name: `);
+        spanWithThelinkToCreature.className = "ms-2 d-block";
+        spanWithThelinkToCreature.appendChild(linkToCreature);
+        span.appendChild(spanWithThelinkToCreature);
         span.appendChild(this.createSpan(`CR: ${creatureToAdd.creatureRating}`));
         span.appendChild(this.createSpan(`Type: ${creatureToAdd.type}`));
         liElement.appendChild(span);
