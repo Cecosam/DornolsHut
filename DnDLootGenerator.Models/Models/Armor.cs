@@ -30,5 +30,7 @@ namespace DnDLootGenerator.Models.Models
         public int Cost { get; set; }
         [Required]
         public string Source { get; set; }
+        [Required]
+        public bool Attunement { get; set; }
     }
 }

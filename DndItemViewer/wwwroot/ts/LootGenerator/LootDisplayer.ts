@@ -256,8 +256,8 @@ class LootDisplayer {
             addInfoToTheToolTip(p, "Rarity: ", getRarity(item.rarity));
             addInfoToTheToolTip(p, "Armor Type: ", getArmorType(item.armorType));
             addInfoToTheToolTip(p, "AC: ", item.armorClass);
-            addInfoToTheToolTip(p, "Additional Info: ", item.additionalInfo);
-            addInfoToTheToolTip(p, "Cost: ", item.cost);
+            addInfoToTheToolTip(p, "Additional Info: ", item.additionalInfo ? item.additionalInfo : "-");
+            //addInfoToTheToolTip(p, "Cost: ", item.cost);
             p.appendChild(document.createElement("br"));
             addInfoToTheToolTip(p, "Source: ", item.source);
 
@@ -266,7 +266,7 @@ class LootDisplayer {
             addInfoToTheToolTip(p, "Weight: ", `${item.weight} lb.`);
             addInfoToTheToolTip(p, "Rarity: ", getRarity(item.rarity));
             addInfoToTheToolTip(p, "Poison Type: ", `(${item.name.split("(")[1]}. ${item.poisonTypes}`);
-            addInfoToTheToolTip(p, "Cost: ", item.cost);
+            //addInfoToTheToolTip(p, "Cost: ", item.cost);
             p.appendChild(document.createElement("br"));
             addInfoToTheToolTip(p, "Source: ", item.source);
 
@@ -275,8 +275,8 @@ class LootDisplayer {
             addInfoToTheToolTip(p, "Weight: ", `${item.weight} lb.`);
             addInfoToTheToolTip(p, "Rarity: ", getRarity(item.rarity));
             addInfoToTheToolTip(p, "Damage: ", `${item.damage} ${item.damageType}`);
-            addInfoToTheToolTip(p, "Additional Info: ", item.additionalInfo);
-            addInfoToTheToolTip(p, "Cost: ", item.cost);
+            addInfoToTheToolTip(p, "Additional Info: ", item.additionalInfo ? item.additionalInfo : "-");
+            //addInfoToTheToolTip(p, "Cost: ", item.cost);
             p.appendChild(document.createElement("br"));
             addInfoToTheToolTip(p, "Source: ", item.source);
 
@@ -284,7 +284,7 @@ class LootDisplayer {
         else if (item.category <= 2 || item.category >= 7) {
             addInfoToTheToolTip(p, "Weight: ", `${item.weight} lb.`);
             addInfoToTheToolTip(p, "Rarity: ", getRarity(item.rarity));
-            addInfoToTheToolTip(p, "Cost: ", item.cost);
+            //addInfoToTheToolTip(p, "Cost: ", item.cost);
             p.appendChild(document.createElement("br"));
             addInfoToTheToolTip(p, "Source: ", item.source);
         }

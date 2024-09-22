@@ -30,5 +30,7 @@ namespace DnDLootGenerator.Models.Enumerations
         Plate = 11,
         [Display(Name = "Shield")]
         Shield = 12,
+        [Display(Name = "Spiked")]
+        Spiked = 13,
     }
 }

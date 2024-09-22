@@ -75,7 +75,7 @@ export class ArmorDisplayer extends IItemDisplayer {
             addInfoToTheToolTip(div, "Rarity: ", getRarity(data[i].rarity));
             addInfoToTheToolTip(div, "Armor Type: ", getArmorType(data[i].armorType));
             addInfoToTheToolTip(div, "AC: ", data[i].armorClass);
-            addInfoToTheToolTip(div, "Additional Info: ", data[i].additionalInfo);
+            addInfoToTheToolTip(div, "Additional Info: ", data[i].additionalInfo ? data[i].additionalInfo : "-");
             div.appendChild(document.createElement("br"));
             addInfoToTheToolTip(div, "Source: ", data[i].source);
 
@@ -88,7 +88,8 @@ export class ArmorDisplayer extends IItemDisplayer {
             let tr: HTMLElement = tbody.appendChild(document.createElement("tr"));
 
             tr.appendChild(document.createElement("td")).appendChild(this.appendAnchorWithRefInIt(data[i].name, data[i].id, data[i].category));
-            tr.appendChild(document.createElement("td")).appendChild(document.createTextNode(data[i].description));
+            let td: HTMLElement = $('<td>').append(data[i].description)[0];
+            tr.appendChild(td);
             tr.appendChild(addTdElementWithClass("text-center", getArmorType(data[i].armorType)));
             tr.appendChild(addTdElementWithClass("text-center", data[i].armorClass));
             tr.appendChild(addTdElementWithClass("text-center", data[i].additionalInfo));
