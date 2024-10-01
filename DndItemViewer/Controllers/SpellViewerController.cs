@@ -33,6 +33,9 @@ namespace DndItemViewer.Controllers
         public IActionResult SpellShow(string spellName)
         {
             spellName = spellName.Replace("-s-", "'s-").Replace("-", " ").Replace("enlarge/reduce", "Enlarge / Reduce");
+            var spell = dbContext.Spells.Where(spell => spell.SpellName == spellName).FirstOrDefault();
+            if (null == spell)
+                return View("SpellNotFound");
             return View("ShowSpell",dbContext.Spells.Where(spell => spell.SpellName == spellName).FirstOrDefault());
         }
 
