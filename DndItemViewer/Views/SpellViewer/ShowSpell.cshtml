@@ -1,6 +1,7 @@
 ﻿@using DnDLootGenerator.Models.Enumerations
 @using DndItemViewer.Helpers;
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Html
 @model Spell
 
 <div id="ShowItemMainDiv" style="overflow: auto;" class="bg-dark vh-100 opacity-custom-95 p-3">
@@ -45,7 +46,7 @@
     @if (@Model.AtHighLevels != string.Empty)
     {
         <p class="text-light h3">At Higher Levels</p>
-        <p class="text-light mb-0">@Model.AtHighLevels</p>
+        <p class="text-light mb-0">@(new HtmlString(Model.AtHighLevels))</p>
     }
     <br />
     <br />

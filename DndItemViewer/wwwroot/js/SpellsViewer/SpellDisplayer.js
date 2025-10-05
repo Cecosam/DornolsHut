@@ -75,7 +75,7 @@ class SpellDisplayer {
             tr.appendChild(document.createElement("td")).appendChild(this.createTooltipForSpell(data[i]));
             tr.appendChild(addTdElementWithClass("text-center", getSpellLevelAsText(data[i].spellLevel)));
             tr.appendChild(addTdElementWithClass("text-center", data[i].castingTime));
-            tr.appendChild(addTdElementWithClass("text-center", data[i].components));
+            tr.appendChild(addTdElementWithClass("text-center", data[i].components.split("(")[0]));
             let td = document.createElement("td");
             td.appendChild(this.createTooltipForSchools(data[i].school, this.getTooltipDescriptionForSpellSchool(data[i].school)));
             td.className = "text-center";
@@ -115,7 +115,7 @@ class SpellDisplayer {
         let innerDiv = document.createElement("div");
         div.appendChild(innerDiv);
         innerDiv.className = "spellTooltip rightCustDown";
-        let p = $('<p>').append(this.getDescription(spell.description))[0];
+        let p = $('<p>').append(spell.description)[0];
         p.className = "bg-dark mt-5 p-2 border border-secondary";
         p.style.overflow = "hidden";
         p.style.maxHeight = "500px";
@@ -124,79 +124,6 @@ class SpellDisplayer {
         i.className = "fixForIElementsInTooltip";
         innerDiv.appendChild(i);
         return div;
-    }
-    getDescription(description) {
-        description = description.replaceAll("@@li@@", "<li>");
-        description = description.replaceAll("@@/li@@", "</li>");
-        description = description.replaceAll("@@ul@@", "<ul>");
-        description = description.replaceAll("@@/ul@@", "</ul>");
-        description = description.replaceAll("@@b@@", "<b>");
-        description = description.replaceAll("@@/b@@", "</b>");
-        description = description.replaceAll("@@i@@", "<i>");
-        description = description.replaceAll("@@/i@@", "</i>");
-        description = description.replaceAll("@@br@@", "<br>");
-        description = this.getTablesFromDescription(description);
-        let index = description.indexOf("@@/div@@");
-        description = replaceAtFunc(description, "@@/div@@", index, "");
-        return description;
-    }
-    getTablesFromDescription(description) {
-        while (description.indexOf("@@table@@") != -1) {
-            let index = 0;
-            let next = 0;
-            while (description.indexOf("@@title@@") != -1) {
-                index = description.indexOf("@@title@@");
-                description = replaceAtFunc(description, "@@title@@", index, "<h3>");
-                index = description.indexOf("@@/div@@", index);
-                description = replaceAtFunc(description, "@@/div@@", index, "</h3>");
-            }
-            index = description.indexOf("@@table@@");
-            description = replaceAtFunc(description, "@@table@@", index, '<table class="table table-bordered table-striped">');
-            while (true) {
-                index = description.indexOf("@@thr@@", index);
-                description = replaceAtFunc(description, "@@thr@@", index, "<tr>");
-                while (true) {
-                    index = description.indexOf("@@div@@", index);
-                    description = replaceAtFunc(description, "@@div@@", index, "<th>");
-                    index = description.indexOf("@@/div@@", index);
-                    description = replaceAtFunc(description, "@@/div@@", index, "</th>");
-                    next = description.indexOf("@@", index);
-                    if (description[next + 2] == '/') {
-                        index = description.indexOf("@@/div@@", index);
-                        description = replaceAtFunc(description, "@@/div@@", index, "</tr>");
-                        break;
-                    }
-                }
-                while (true) {
-                    index = description.indexOf("@@tdr@@", index);
-                    description = replaceAtFunc(description, "@@tdr@@", index, "<tr>");
-                    next = 0;
-                    while (true) {
-                        index = description.indexOf("@@div@@", index);
-                        description = replaceAtFunc(description, "@@div@@", index, "<td>");
-                        index = description.indexOf("@@/div@@", index);
-                        description = replaceAtFunc(description, "@@/div@@", index, "</td>");
-                        next = description.indexOf("@@", index);
-                        if (description[next + 2] == '/') {
-                            index = description.indexOf("@@/div@@", index);
-                            description = replaceAtFunc(description, "@@/div@@", index, "</tr>");
-                            break;
-                        }
-                    }
-                    next = description.indexOf("@@", index);
-                    if (description[next + 2] == '/' || description.substring(next, next + 7).includes("thr")) {
-                        break;
-                    }
-                }
-                next = description.indexOf("@@", index);
-                if (description[next + 2] == '/') {
-                    index = description.indexOf("@@/div@@", index);
-                    description = replaceAtFunc(description, "@@/div@@", index, "</table>");
-                    break;
-                }
-            }
-        }
-        return description;
     }
     createTooltipForSchools(name, description) {
         let div = document.createElement("div");
